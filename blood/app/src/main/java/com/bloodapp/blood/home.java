@@ -2,6 +2,7 @@ package com.bloodapp.blood;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.ViewUtils;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -145,6 +146,23 @@ public class home extends AppCompatActivity {
         startActivity(apple);
     }
 
+    public  void clickd(View v)
+    {
+        Intent mango = new Intent(this,imageupload.class);
+        startActivity(mango);
+    }
+
+    public  void clickdd(View v)
+    {
+        Intent mapd = new Intent(this,map.class);
+        startActivity(mapd);
+    }
+
+    public  void clickdnd(View v)
+    {
+        Intent post = new Intent(this,camp.class);
+        startActivity(post);
+    }
 
     }
 
