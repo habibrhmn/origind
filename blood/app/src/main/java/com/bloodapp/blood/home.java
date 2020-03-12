@@ -164,6 +164,13 @@ public class home extends AppCompatActivity {
         startActivity(post);
     }
 
+
+    public  void  gotToChat(View v)
+    {
+        Intent chats = new Intent(this,ChatRoom.class);
+        startActivity(chats);
+    }
+
     }
 
 

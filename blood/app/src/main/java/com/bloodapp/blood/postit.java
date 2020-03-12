@@ -32,7 +32,7 @@ public class postit extends AppCompatActivity {
 
     private static final int GALLERY_REQUEST =2;
     private Uri uri= null;
-    private ImageButton imageButton;
+    private ImageButton imagebutton;
     private EditText editName;
     private EditText editDsec;
     private StorageReference storageReference;
@@ -47,13 +47,13 @@ public class postit extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_postit);
 
-        editName = findViewById(R.id.editName);
+        editName = findViewById(R.id.editname);
         editDsec = findViewById(R.id.editDesc);
         storageReference = FirebaseStorage.getInstance().getReference();
-        databaseReference = database.getInstance().getReference().child("InstaApp");
+        databaseReference = database.getInstance().getReference().child("Post_Image");
         mAuth= FirebaseAuth.getInstance();
         mCurrentUser = mAuth.getCurrentUser();
-        mDatabaseUsers = FirebaseDatabase.getInstance().getReference().child("Users").child(mCurrentUser.getUid());
+        mDatabaseUsers = FirebaseDatabase.getInstance().getReference().child("unReg").child(mCurrentUser.getUid());
 
     }
 
@@ -68,8 +68,8 @@ public class postit extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == GALLERY_REQUEST && resultCode== RESULT_OK ){
             uri = data.getData();
-            imageButton = findViewById(R.id.imageButton);
-            imageButton.setImageURI(uri);
+            imagebutton = findViewById(R.id.imageButton);
+            imagebutton.setImageURI(uri);
         }
     }
 
@@ -80,14 +80,12 @@ public class postit extends AppCompatActivity {
 
         if(!TextUtils.isEmpty(name)&&!TextUtils.isEmpty(desc))
         {
-             StorageReference filepath = storageReference.child("Post_Image").child(uri.getLastPathSegment());
+             StorageReference filepath = storageReference.child("PostImage").child(uri.getLastPathSegment());
              filepath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                  @Override
                  public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                     final Task<Uri> downloadurl = taskSnapshot.getMetadata().getReference().getDownloadUrl();
-                     Toast.makeText(postit.this,"Upload Complete",Toast.LENGTH_LONG).show();
+                     final Task<Uri> downloadurl = taskSnapshot.getStorage().getDownloadUrl();                     Toast.makeText(postit.this,"Upload Complete",Toast.LENGTH_LONG).show();
                      final DatabaseReference newPost = databaseReference.push();
-
 
                      mDatabaseUsers.addValueEventListener(new ValueEventListener() {
                          @Override

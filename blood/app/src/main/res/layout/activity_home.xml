@@ -63,6 +63,14 @@
         android:id="@+id/verification"
         />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chat Rooms"
+        android:onClick="gotToChat"
+        android:layout_below="@+id/buttonSignIn"
+        />
+
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"

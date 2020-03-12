@@ -46,7 +46,6 @@ public class imageupload extends AppCompatActivity {
                     Toast.makeText(imageupload.this,"Image uploaded",Toast.LENGTH_LONG).show();
                 }
             });
-
         }
     }
 }

@@ -92,7 +92,7 @@ public class register extends AppCompatActivity {
                                     } else {
 
                                         addData();
-                                        startActivity(new Intent(register.this, home.class));
+                                        startActivity(new Intent(register.this, login.class));
                                         finish();
 
 

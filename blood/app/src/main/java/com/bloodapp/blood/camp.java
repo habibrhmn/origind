@@ -48,7 +48,7 @@ public class camp extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseRecyclerAdapter<posting,ViewHolder> fbra = new FirebaseRecyclerAdapter<posting, ViewHolder>(
+        FirebaseRecyclerAdapter <posting,ViewHolder> fbra = new FirebaseRecyclerAdapter<posting, ViewHolder>(
                 posting.class,
                 R.layout.block,
                 ViewHolder.class,
@@ -64,6 +64,7 @@ public class camp extends AppCompatActivity {
                 viewHolder.setuserName(posting.getUserName());
             }
         };
+        postlist.setAdapter(fbra);
     }
 
     @Override
@@ -77,32 +78,33 @@ public class camp extends AppCompatActivity {
 
     public static class ViewHolder extends RecyclerView.ViewHolder
     {
+        View view;
         public ViewHolder(View itemView)
         {
             super(itemView);
-            View view = itemView;
+           view = itemView;
         }
         public void setTitle(String title)
         {
-            TextView name = itemView.findViewById(R.id.textTitle);
+            TextView name = view.findViewById(R.id.textTitle);
             name.setText(title);
         }
 
         public void setDesc(String desc)
         {
-            TextView name = itemView.findViewById(R.id.textDesc);
-            name.setText(desc);
+            TextView dead = view.findViewById(R.id.textDesc);
+            dead.setText(desc);
         }
 
         public void setImage(Context ctx, String image)
         {
-            ImageView post = itemView.findViewById(R.id.postImage);
-            Picasso.get().load(image).into(post);
+            ImageView post = view.findViewById(R.id.postImage);
+            Picasso.with(ctx).load(image).into(post);
         }
 
         public void  setuserName(String userName)
         {
-            TextView postname = itemView.findViewById(R.id.textUsername);
+            TextView postname = view.findViewById(R.id.textUsername);
             postname.setText(userName);
         }
     }
