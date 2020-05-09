@@ -18,13 +18,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ChatRoom"></activity>
+        <activity android:name=".payforbld"></activity>
+        <activity android:name=".detailhops" />
+        <activity android:name=".ResetPassword" />
+        <activity android:name=".Hospital" />
+        <activity android:name=".ReciverLogin" />
+        <activity android:name=".AdminPage" />
+        <activity android:name=".RecieverHome" />
+        <activity android:name=".ChatRoom" />
         <activity android:name=".postit" />
         <activity
             android:name=".camp"
             android:label="@string/title_activity_camp"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".imageupload" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

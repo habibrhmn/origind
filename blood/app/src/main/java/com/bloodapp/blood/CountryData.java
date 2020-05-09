@@ -1,4 +1,4 @@
-package com.ashwiniraj.phoneotp;
+package com.bloodapp.blood;
 
 public class CountryData {
     public static final String[] countryNames = {"India", "Afghanistan", "Albania",

@@ -39,6 +39,8 @@ public class postit extends AppCompatActivity {
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
     private FirebaseAuth mAuth;
+    private String useapple;
+    private FirebaseAuth.AuthStateListener mAuthStateListener;
     private DatabaseReference mDatabaseUsers;
     private FirebaseUser mCurrentUser;
 
@@ -48,12 +50,23 @@ public class postit extends AppCompatActivity {
         setContentView(R.layout.activity_postit);
 
         editName = findViewById(R.id.editname);
+        useapple = mCurrentUser.getEmail();
         editDsec = findViewById(R.id.editDesc);
         storageReference = FirebaseStorage.getInstance().getReference();
         databaseReference = database.getInstance().getReference().child("Post_Image");
         mAuth= FirebaseAuth.getInstance();
         mCurrentUser = mAuth.getCurrentUser();
-        mDatabaseUsers = FirebaseDatabase.getInstance().getReference().child("unReg").child(mCurrentUser.getUid());
+        mDatabaseUsers = FirebaseDatabase.getInstance().getReference().child("unReg");
+
+        mAuthStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                if (mCurrentUser == null)
+                {
+                    startActivity(new Intent(postit.this,MainActivity.class));
+                }
+            }
+        };
 
     }
 
@@ -84,7 +97,8 @@ public class postit extends AppCompatActivity {
              filepath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                  @Override
                  public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                     final Task<Uri> downloadurl = taskSnapshot.getStorage().getDownloadUrl();                     Toast.makeText(postit.this,"Upload Complete",Toast.LENGTH_LONG).show();
+                     final Task<Uri> downloadurl = taskSnapshot.getStorage().getDownloadUrl();
+                     Toast.makeText(postit.this,"Upload Complete",Toast.LENGTH_LONG).show();
                      final DatabaseReference newPost = databaseReference.push();
 
                      mDatabaseUsers.addValueEventListener(new ValueEventListener() {
@@ -94,7 +108,7 @@ public class postit extends AppCompatActivity {
                              newPost.child("desc").setValue(desc);
                              newPost.child("image").setValue(downloadurl.toString());
                              newPost.child("uid").setValue(mCurrentUser.getUid());
-                             newPost.child("username").setValue(dataSnapshot.child("userName").getValue()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                             newPost.child("username").setValue(useapple).addOnCompleteListener(new OnCompleteListener<Void>() {
                                  @Override
                                  public void onComplete(@NonNull Task<Void> task) {
                                      if (task.isSuccessful())

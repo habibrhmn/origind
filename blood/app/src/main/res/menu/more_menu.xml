@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:title="Health Tips"
+        android:id="@+id/tips"
+        app:showAsAction="always"
+        />
+    <item
+        android:id="@+id/mapdd"
+        android:icon="@drawable/maplogo"
+        app:showAsAction="always"
+        android:title="mapcamp"
+        />
+
+    <item
+        android:title="Blood Camps"
+        android:id="@+id/campdd"
+        />
+
+    <item
+        android:id="@+id/Chatdd"
+        android:title="Chat Room"
+        />
+    <item
+        android:title="Signout"
+        android:id="@+id/signs_out"
+        />
+
+</menu>

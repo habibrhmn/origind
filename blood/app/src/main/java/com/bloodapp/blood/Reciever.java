@@ -14,7 +14,7 @@ public class Reciever {
 
     }
 
-    public Reciever(String userID, String userName, String userBlood, String userAge, String userNumber, String userVerify) {
+    public Reciever(String userID, String userName, String userBlood, String userAge, String userNumber, String userVerify ) {
         this.userID = userID;
         this.userName = userName;
         this.userBlood = userBlood;
@@ -47,4 +47,5 @@ public class Reciever {
     {
         return userVerify;
     }
+
 }

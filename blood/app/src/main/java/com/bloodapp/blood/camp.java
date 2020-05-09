@@ -7,21 +7,26 @@ import android.os.Bundle;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.sql.DatabaseMetaData;
 
@@ -29,6 +34,8 @@ public class camp extends AppCompatActivity {
 
     private RecyclerView postlist;
     private DatabaseReference database;
+    private FirebaseUser userd;
+    private FirebaseAuth.AuthStateListener mListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +45,17 @@ public class camp extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         postlist = findViewById(R.id.listed);
+        userd = FirebaseAuth.getInstance().getCurrentUser();
         postlist.setHasFixedSize(true);
         postlist.setLayoutManager(new LinearLayoutManager(this));
         database = FirebaseDatabase.getInstance().getReference().child("Post_Image");
+
+        mListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                startActivity(new Intent(camp.this,MainActivity.class));
+            }
+        };
 
 
     }
@@ -116,13 +131,20 @@ public class camp extends AppCompatActivity {
 
         if (id == R.id.setting)
         {
-            return true;
+            Toast.makeText(camp.this,"Still making it!!!, underdeveloped",Toast.LENGTH_LONG).show();
         }
 
         if (id==R.id.appicon)
         {
-            Intent intent = new Intent(this,postit.class);
-            startActivity(intent);
+            String jad = userd.getEmail();
+            String adds = "admin@gmail.com";
+            if (jad.equals(adds)) {
+                Intent intent = new Intent(this, postit.class);
+                startActivity(intent);
+            }
+            else {
+                Toast.makeText(camp.this,"Your are not allowed to use this functionality",Toast.LENGTH_LONG).show();
+            }
         }
 
         return super.onOptionsItemSelected(item);

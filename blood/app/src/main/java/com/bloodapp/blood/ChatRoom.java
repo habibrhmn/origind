@@ -32,6 +32,7 @@ public class ChatRoom extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private FirebaseUser mCurrentUser;
+    String userApple;
     private DatabaseReference mDatabaseUsers;
 
 
@@ -41,8 +42,10 @@ public class ChatRoom extends AppCompatActivity {
         setContentView(R.layout.activity_chat_room);
 
         editMessage = findViewById(R.id.editMessagE);
+        mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Messages");
         mMessageList = findViewById(R.id.messageRec);
+        userApple = mCurrentUser.getEmail();
         mMessageList.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager= new LinearLayoutManager(this);
         linearLayoutManager.setStackFromEnd(true);
@@ -61,7 +64,7 @@ public class ChatRoom extends AppCompatActivity {
     public void sendButtonClicked(View v)
     {
         mCurrentUser = mAuth.getCurrentUser();
-        mDatabaseUsers = FirebaseDatabase.getInstance().getReference().child("unReg").child(mCurrentUser.getUid());
+        mDatabaseUsers = FirebaseDatabase.getInstance().getReference().child("unReg");
         final String messageValue = editMessage.getText().toString().trim();
 
         if(!TextUtils.isEmpty(messageValue))
@@ -72,10 +75,10 @@ public class ChatRoom extends AppCompatActivity {
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                     newPost.child("content").setValue(messageValue);
-                    newPost.child("username").setValue(dataSnapshot.child("userName").getValue()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    newPost.child("username").setValue(userApple).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
-
+                            editMessage.setText(null);
                         }
                     });
                 }

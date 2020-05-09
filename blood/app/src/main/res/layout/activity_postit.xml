@@ -43,7 +43,6 @@
         android:layout_height="wrap_content"
         android:text="Post It"
         android:layout_marginTop="50dp"
-        android:id="@+id/postimg"
         android:onClick="postimage"
         />
 

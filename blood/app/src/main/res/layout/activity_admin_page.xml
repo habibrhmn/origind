@@ -1,0 +1,102 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdminPage"
+    >
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SignOut"
+        android:onClick="SignClick"
+        android:id="@+id/signbtnn"
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Enter the email to be removed"
+        android:id="@+id/removemail"
+        android:layout_below="@+id/signbtnn"
+        android:layout_centerHorizontal="true"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remove User"
+        android:layout_below="@+id/removemail"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/delUser"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Blood Camp Latitude and Logitude"
+        android:textSize="25dp"
+        android:layout_below="@id/delUser"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/medtext"
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/medtext"
+        android:id="@+id/longi"
+        android:layout_marginTop="30dp"
+        android:hint="Enter the Logitude here"
+        android:layout_centerHorizontal="true"
+        />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/longi"
+        android:id="@+id/lati"
+        android:layout_marginTop="20dp"
+        android:hint="Enter the latitude here"
+        android:layout_centerHorizontal="true"
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Enter Hospital Name"
+        android:layout_below="@+id/lati"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/hospname"
+        android:layout_marginTop="20dp"
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Enter Amount"
+        android:layout_below="@+id/hospname"
+        android:layout_marginTop="20dp"
+        android:id="@+id/bldAmount"
+        android:layout_centerHorizontal="true"
+        />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/hospname"
+        android:layout_marginTop="20dp"
+        android:id="@+id/spinBld"
+        android:entries="@array/Blood" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bldAmount"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:text="Save Data"
+        android:id="@+id/savedata"
+        />
+</RelativeLayout>
+</ScrollView>

@@ -54,11 +54,12 @@
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="126dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentRight="true"
         android:layout_below="@+id/numbers"
         android:layout_marginTop="30dp"
+        android:layout_marginRight="20dp"
         android:text="Register"
         android:textSize="20dp"
         />
@@ -117,7 +118,18 @@
         android:id="@+id/numbers"
         android:layout_marginTop="10dp"
         android:ems="10"
+        android:maxLength="10"
         android:gravity="center"
+        />
+    <Button
+        android:layout_width="126dp"
+        android:layout_height="wrap_content"
+        android:text="Reciever Register"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/numbers"
+        android:id="@+id/btn4"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
         />
     <Spinner
         android:layout_width="120dp"
@@ -125,6 +137,15 @@
         android:layout_below="@id/spinner"
         android:layout_marginTop="10dp"
         android:id="@+id/spin"
+        />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/numbers"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:entries="@array/Cities"
         />
 
 </RelativeLayout>

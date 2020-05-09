@@ -26,5 +26,11 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="15dp"
         />
+    <TextClock
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:format12Hour="hh:mm a"
+        android:layout_marginLeft="20dp"
+        />
 
 </LinearLayout>

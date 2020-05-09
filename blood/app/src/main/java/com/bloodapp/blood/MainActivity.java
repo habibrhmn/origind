@@ -31,8 +31,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
-
+    public void receiverClick(View v)
+    {
+        Intent intent = new Intent(this,ReciverLogin.class);
+        startActivity(intent);
+    }
 }
 
 

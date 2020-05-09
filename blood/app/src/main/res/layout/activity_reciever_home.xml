@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RecieverHome">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:text="Email Verified"
+        android:layout_marginTop="20dp"
+        android:id="@+id/verfac"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:textSize="20dp"
+        android:clickable="true"
+        android:id="@+id/donateblood1"
+        android:onClick="bloodDonate"
+        android:text="Want to Donate Blood in a Blood Bank?" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/donateblood1"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical"
+        >
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:hint="Enter Your New Password"
+            android:gravity="center_horizontal"
+            android:layout_gravity="bottom"
+            android:inputType="textPassword"
+            android:id="@+id/mailRT"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/editshape"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="Change Password"
+            android:id="@+id/changepwd"
+            />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:id="@+id/bloodAvb"
+            />
+    </LinearLayout>
+
+
+</RelativeLayout>

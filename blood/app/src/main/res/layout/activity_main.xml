@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="#1b3236"
+    android:background="@drawable/backgroundd"
     >
 
     <TextView
@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:text="Blood Donor"
         android:textSize="40dp"
-        android:layout_marginVertical="50dp"
+        android:layout_marginTop="110dp"
         android:layout_centerHorizontal="true"
         android:textColor="#20d2a0"
         android:id="@+id/test"
@@ -23,11 +23,22 @@
         android:layout_width="126dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/test"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dp"
         android:layout_marginVertical="50dp"
         android:onClick="buttonClicked"
         android:text="Login"
         android:textSize="20dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Receiver Login"
+        android:layout_below="@+id/test"
+        android:layout_marginTop="50dp"
+        android:onClick="receiverClick"
+        android:layout_marginLeft="10dp"
+        />
 
     <Button
         android:layout_width="126dp"

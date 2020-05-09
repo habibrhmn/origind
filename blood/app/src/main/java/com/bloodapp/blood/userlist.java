@@ -35,7 +35,7 @@ public class userlist extends ArrayAdapter<Reciever> {
         TextView khoon =  listViewItem.findViewById(R.id.blood);
         TextView phone = listViewItem.findViewById(R.id.numbers);
         TextView age = listViewItem.findViewById(R.id.aged);
-        TextView emaild = listViewItem.findViewById(R.id.verify);
+        TextView emaild = listViewItem.findViewById(R.id.emaild);
 
         Reciever reciever = reciverList.get(position);
 

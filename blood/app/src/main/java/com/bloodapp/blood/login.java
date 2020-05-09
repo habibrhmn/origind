@@ -24,6 +24,8 @@ import com.google.firebase.auth.FirebaseAuth;
         private FirebaseAuth auth;
         private ProgressBar progressBar;
         public Button btnLogin;
+        private String nemad = "admin@gmail.com";
+
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +34,7 @@ import com.google.firebase.auth.FirebaseAuth;
             auth = FirebaseAuth.getInstance();
 
             if (auth.getCurrentUser() != null) {
-                startActivity(new Intent(login.this, home.class));
+                startActivity(new Intent(login.this, RecieverHome.class));
                 finish();
             }
 
@@ -50,7 +52,7 @@ import com.google.firebase.auth.FirebaseAuth;
             btnLogin.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String email = inputEmail.getText().toString();
+                    final String email = inputEmail.getText().toString();
                     final String password = inputPassword.getText().toString();
 
                     if (TextUtils.isEmpty(email)) {
@@ -72,17 +74,23 @@ import com.google.firebase.auth.FirebaseAuth;
 
                                     progressBar.setVisibility(View.GONE);
                                     if (!task.isSuccessful()) {
-                                        // there was an error
                                         if (password.length() < 6) {
                                             inputPassword.setError(getString(R.string.minimum_password));
                                         } else {
                                             Toast.makeText(login.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                                         }
                                     } else {
-                                            Intent intent = new Intent(login.this, home.class);
+                                        if (email.equals(nemad))
+                                        {
+                                            Intent intent= new Intent(login.this,AdminPage.class);
                                             startActivity(intent);
                                             finish();
-
+                                        }
+                                        else {
+                                            Intent intent = new Intent(login.this, RecieverHome.class);
+                                            startActivity(intent);
+                                            finish();
+                                        }
                                     }
                                 }
                             });
@@ -95,4 +103,9 @@ import com.google.firebase.auth.FirebaseAuth;
         startActivity(intent);
     }
 
+    public void resetpwds(View view)
+    {
+        Intent intent = new Intent(login.this,ResetPassword.class);
+        startActivity(intent);
+    }
 }
